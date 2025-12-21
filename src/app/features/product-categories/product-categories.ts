@@ -1,9 +1,10 @@
 import { Component, AfterViewInit, OnDestroy, signal, ElementRef, ViewChildren, QueryList, afterNextRender, Inject, PLATFORM_ID } from '@angular/core';
-import { NgClass, isPlatformBrowser } from '@angular/common';
+import { NgClass, isPlatformBrowser, CommonModule } from '@angular/common';
+import { ASSETS_PATHS } from '../../core/constants/assets.constants';
 
 @Component({
   selector: 'app-product-categories',
-  imports: [NgClass],
+  imports: [NgClass, CommonModule],
   templateUrl: './product-categories.html',
   styleUrl: './product-categories.scss',
 })
@@ -12,29 +13,31 @@ export class ProductCategories implements AfterViewInit, OnDestroy {
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
+  ASSETS_PATHS = ASSETS_PATHS;
+
   categories = [
     {
       id: 1,
       name: 'JUJUTSU KAISEN',
-      image: '/assets/images/sudadera1.jpg',
+      image: ASSETS_PATHS.anime.jujutsu,
       description: 'Colección exclusiva'
     },
     {
       id: 2,
       name: 'ONE PIECE',
-      image: '/assets/images/sudadera1.jpg',
+      image: ASSETS_PATHS.anime.onepiece,
       description: 'Nuevos diseños'
     },
     {
       id: 3,
       name: 'NARUTO',
-      image: '/assets/images/sudadera1.jpg',
+      image: ASSETS_PATHS.anime.naruto,
       description: 'Edición limitada'
     },
     {
       id: 4,
       name: 'DANDADAN',
-      image: '/assets/images/sudadera1.jpg',
+      image: ASSETS_PATHS.anime.dandadan,
       description: 'Últimas tendencias'
     }
   ];
