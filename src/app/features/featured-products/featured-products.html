@@ -33,11 +33,16 @@
             </div>
           </div>
           <div class="space-y-2">
-            <p class="text-sm text-gray-600 uppercase tracking-wide">{{ product.category }}</p>
+            <p class="text-sm text-gray-600 uppercase tracking-wide text-red-600 font-bold">{{ product.category }}</p>
+
+            <div class="rounded-md flex items-center bg-slate-100 py-0.5 px-2.5 border border-transparent text-sm text-slate-600 transition-all shadow-sm w-max">
+              <i class='bx bxs-star mr-1.5 text-yellow-500'></i>
+              Destacado
+            </div>
             <h3 class="text-lg font-semibold text-black group-hover:opacity-70 transition-opacity">
               {{ product.name }}
             </h3>
-            <p class="text-xl font-bold text-black">${{ product.price }}</p>
+            <p class="text-xl ">${{ product.price }}</p>
           </div>
         </div>
       }

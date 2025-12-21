@@ -20,11 +20,11 @@
 // footer style
 
 .card-footer-link {
-    @apply bg-transparent rounded-lg aspect-square mb-2 flex items-center justify-center relative overflow-hidden;
+    @apply bg-transparent rounded-lg aspect-square mb-2 flex items-center justify-center relative overflow-hidden group-hover:scale-105 transition-all duration-300 ease-in-out group-hover:shadow-lg group-hover:shadow-white/10;
 }
 
 .cover-image {
-    @apply absolute inset-0 w-full h-full object-cover z-0;
+    @apply absolute inset-0 w-full h-full object-cover z-0 group-hover:from-black/30 group-hover:to-black/40 transition-all duration-300;
 }
 
 .gradient-overlay {
