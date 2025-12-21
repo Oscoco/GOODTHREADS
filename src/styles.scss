@@ -1,1 +1,23 @@
 @import './tailwind.css';
+@import 'animate.css';
+
+
+
+/* ! Style to Slide Bar */
+
+.bar-hover {
+    @apply px-6 py-3 hover:bg-gray-900 transition-colors;
+}
+
+// footer style
+
+.card-footer {
+    @apply bg-gray-800 rounded-lg aspect-square mb-2 flex items-center justify-center;
+}
+
+
+// hero section style
+
+
+
+

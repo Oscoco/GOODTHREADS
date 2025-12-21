@@ -1,0 +1,40 @@
+<section class="py-16 bg-white">
+  <div class="container mx-auto px-4">
+    <div class="flex items-center justify-between mb-12">
+      <h2 class="text-4xl md:text-5xl font-bold text-black animate__animated animate__fadeInDown">Productos Destacados</h2>
+      <button class="flex items-center gap-2 text-black font-medium text-lg hover:opacity-70 transition-opacity">
+        Ver todo
+        <i class='bx bx-chevron-right text-2xl'></i>
+      </button>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      @for (product of products; track product.id; let i = $index) {
+        <div #productCard 
+             class="group cursor-pointer opacity-0 translate-y-4 transition-all duration-700 ease-out"
+             [ngClass]="{
+               'opacity-100 translate-y-0': isProductVisible(i)
+             }"
+             [style.transition-delay]="isProductVisible(i) ? getAnimationDelay(i) : '0s'">
+          <div class="relative aspect-square mb-4 overflow-hidden rounded-lg bg-gray-100">
+            <img 
+              [src]="product.image" 
+              [alt]="product.name"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <button class="absolute top-4 right-4 w-10 h-10 bg-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-gray-100">
+              <i class='bx bx-heart text-xl text-black'></i>
+            </button>
+          </div>
+          <div class="space-y-2">
+            <p class="text-sm text-gray-600 uppercase tracking-wide">{{ product.category }}</p>
+            <h3 class="text-lg font-semibold text-black group-hover:opacity-70 transition-opacity">
+              {{ product.name }}
+            </h3>
+            <p class="text-xl font-bold text-black">${{ product.price }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+

@@ -1,0 +1,110 @@
+<header class="sticky top-0 z-50 w-full bg-black border-white shadow-md">
+  <div class="container mx-auto sm:px-2 px-6 h-16 flex items-center justify-between">
+    
+    <button 
+      (click)="toggleMenu()"
+      aria-label="Abrir menú"
+      class="flex flex-col justify-center space-y-1.5 w-6 h-6 cursor-pointer">
+      <span 
+        class="block w-6 h-0.5 bg-white rounded-full transition-all duration-300"
+        [class.rotate-45]="isMenuOpen()"
+        [class.translate-y-2]="isMenuOpen()">
+      </span>
+      <span 
+        class="block w-6 h-0.5 bg-white rounded-full transition-all duration-300"
+        [class.opacity-0]="isMenuOpen()">
+      </span>
+      <span 
+        class="block w-6 h-0.5 bg-white rounded-full transition-all duration-300"
+        [class.-rotate-45]="isMenuOpen()"
+        [class.-translate-y-2]="isMenuOpen()">
+      </span>
+    </button>
+  
+    <a routerLink="/" class="text-xl font-bold tracking-tighter text-white uppercase">
+      GOODTHREADS
+    </a>
+  
+    <button class="inline-flex items-center bg-white border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0 text-black transition-colors">
+      Favoritos
+      <i class='bx bx-heart text-xl ml-1'></i>
+    </button>
+  
+  </div>
+
+  <!-- Menú lateral -->
+  <div 
+    class="fixed inset-0 z-50 transition-opacity duration-300 ease-in-out"
+    [class.opacity-0]="!isMenuOpen()"
+    [class.pointer-events-none]="!isMenuOpen()"
+    [class.opacity-100]="isMenuOpen()"
+    [class.pointer-events-auto]="isMenuOpen()"
+    (click)="closeMenu()">
+    
+    <div 
+      class="fixed inset-0 bg-black/50 transition-opacity duration-300 ease-in-out"
+      [class.opacity-0]="!isMenuOpen()"
+      [class.opacity-100]="isMenuOpen()">
+    </div>
+    
+    <div 
+      class="fixed left-0 top-0 h-screen sm:w-100 w-80 bg-black text-white shadow-xl transform transition-transform duration-300 ease-in-out"
+      [class.-translate-x-full]="!isMenuOpen()"
+      [class.translate-x-0]="isMenuOpen()"
+      (click)="$event.stopPropagation()">
+      <div class="flex flex-col h-full">
+        
+
+        <nav class="flex-1 overflow-y-auto py-6 sm:text-2xl text-xl">
+          <br><br>
+          <a routerLink="/" (click)="closeMenu()" class="block bar-hover">Inicio</a>
+          <a href="#" class="block bar-hover">Ravve™</a>
+          <a href="#" class="block bar-hover">drops™</a>
+          <a href="#" class="block bar-hover">packs™</a>
+          <a href="#" class="flex items-center justify-between bar-hover">
+            <span>Anime</span>
+            <i class='bx bx-chevron-right'></i>
+          </a>
+          <a href="#" class="flex items-center justify-between bar-hover">
+            <span>Artistas y Conciertos</span>
+            <i class='bx bx-chevron-right'></i>
+          </a>
+          <a href="#" class="flex items-center justify-between bar-hover">
+            <span>Categorias</span>
+            <i class='bx bx-chevron-right'></i>
+          </a>
+          <a href="#" class="flex items-center justify-between bar-hover">
+            <span>Complementos</span>
+            <i class='bx bx-chevron-right'></i>
+          </a>
+          <a href="#" class="flex items-center justify-between bar-hover">
+            <span>Deportes</span>
+            <i class='bx bx-chevron-right'></i>
+          </a>
+          <a href="#" class="flex items-center justify-between bar-hover">
+            <span>Series y Videojuegos</span>
+            <i class='bx bx-chevron-right'></i>
+          </a>
+          <br>
+          <a href="#" class="block bar-hover">Todas las Colecciones</a>
+          <br>
+          <a href="#" class="block bar-hover">FAQs</a>
+        </nav>
+
+        <div class="border-t border-gray-800 p-4">
+          <div class="flex justify-center space-x-6">
+            <a href="#" aria-label="Facebook" class="text-white hover:text-gray-300 transition-colors">
+              <i class='bx bxl-facebook text-2xl'></i>
+            </a>
+            <a href="#" aria-label="Instagram" class="text-white hover:text-gray-300 transition-colors">
+              <i class='bx bxl-instagram text-2xl'></i>
+            </a>
+            <a href="#" aria-label="TikTok" class="text-white hover:text-gray-300 transition-colors">
+              <i class='bx bxl-tiktok text-2xl'></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

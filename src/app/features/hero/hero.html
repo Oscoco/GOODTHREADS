@@ -1,0 +1,54 @@
+<section class="relative min-h-screen flex items-center overflow-hidden">
+    <div class="absolute inset-0 z-0">
+        <video [src]="heroLoop" alt="GoodThreads Hero" class="w-full h-full object-cover" autoplay loop muted playsinline>
+            <source [src]="heroLoop" type="video/mp4">
+        </video>
+        <div class="absolute inset-0  bg-opacity-0 md:bg-opacity-0 lg:bg-opacity-30 md:bg-transparent lg:bg-black"></div>
+    </div>
+    <div class="container mx-auto px-4 relative z-10 w-full py-12 lg:py-0">
+        <div class="grid lg:grid-cols-12 gap-8 items-center">
+            <div class="lg:col-span-6 space-y-6 md:space-y-8 lg:space-y-12 animate__animated animate__fadeInLeft w-full">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 z-100">
+                    <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-9xl font-bold text-red-600 tracking-tighter animate__animated animate__fadeInDown animate__delay-1s drop-shadow-lg">GOOD THREADS</h1>
+                </div>
+
+                <div class="space-y-4 md:space-y-6 max-w-lg animate__animated animate__fadeInUp animate__delay-2s">
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight drop-shadow-lg">
+                        Clothes without<br>
+                        excess. Only style.
+                    </h2>
+                    <p class="text-sm sm:text-base md:text-lg text-white leading-relaxed drop-shadow-md">
+                        Modern silhouettes, natural<br>
+                        fabrics, and honest design.<br>
+                        For those who choose<br>
+                        simplicity and quality.
+                    </p>
+                </div>
+            </div>
+
+            <div class="hidden lg:block lg:col-span-6 relative animate__animated animate__fadeInRight">
+                <div class="relative z-10 flex justify-center animate__animated animate__zoomIn animate__delay-1s">
+                    <div class="w-full max-w-md aspect-[2/3] rounded-lg overflow-hidden shadow-2xl">
+                        <img [src]="heroImage" alt="GoodThreads Hero" class="w-full h-full object-cover">
+                    </div>
+                </div>
+
+                <div class="absolute top-1/2 right-8 transform -translate-y-1/2 z-20 animate__animated animate__zoomIn animate__delay-2s">
+                    <div class="bg-white border border-gray-200 rounded-2xl p-4 shadow-xl w-48">
+                        <div class="aspect-square bg-gray-100 rounded-xl mb-3 flex items-center justify-center overflow-hidden">
+                            <img [src]="sudaderaImage" alt="GoodThreads Hero" class="w-full h-full object-cover">
+                        </div>
+                        <p class="text-xs text-gray-600">2025</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-8 md:mt-16 animate__animated animate__fadeInUp animate__delay-3s">
+            <button class="flex items-center gap-2 text-white font-medium text-base md:text-lg hover:opacity-70 hover:scale-105 transform transition-all duration-300 bg-red-600 px-6 py-3 rounded-lg hover:bg-red-700">
+                new collection
+                <i class='bx bx-chevron-right text-2xl'></i>
+            </button>
+        </div>
+    </div>
+</section>

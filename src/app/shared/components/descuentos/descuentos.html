@@ -1,0 +1,46 @@
+<div class="bg-black text-white py-2">
+    <div class="container mx-auto">
+        <div class="flex items-center justify-between">
+            <!-- Iconos de redes sociales - Solo desktop -->
+            <div class="hidden lg:flex items-center space-x-3">
+                <a href="#" aria-label="Facebook" class="w-8 h-8 flex items-center justify-center hover:text-gray-300 transition-colors">
+                    <i class='bx bxl-facebook text-base text-white'></i>
+                </a>
+                <a href="#" aria-label="Instagram" class="w-8 h-8 flex items-center justify-center hover:text-gray-300 transition-colors">
+                    <i class='bx bxl-instagram text-base text-white'></i>
+                </a>
+                <a href="#" aria-label="TikTok" class="w-8 h-8 flex items-center justify-center hover:text-gray-300 transition-colors">
+                    <i class='bx bxl-tiktok text-base text-white'></i>
+                </a>
+            </div>
+
+            <div class="flex-1 flex items-center justify-center space-x-3 lg:space-x-28">
+                <button 
+                    (click)="previousMessage(); pauseAutoSlide(); resumeAutoSlide()"
+                    aria-label="Anterior" 
+                    class="text-white hover:text-gray-300 transition-colors cursor-pointer flex items-center justify-center">
+                    <i class='bx bx-chevron-left text-xl'></i>
+                </button>
+
+                <div class="min-w-[200px] sm:min-w-[300px] text-center">
+                    <a 
+                        href="#" 
+                        class="text-xs sm:text-sm text-white hover:underline font-bold cursor-pointer whitespace-nowrap block transition-opacity duration-300"
+                        [class.opacity-0]="isAnimating()"
+                        [class.opacity-100]="!isAnimating()">
+                        {{ currentMessage }}
+                    </a>
+                </div>
+
+                <button 
+                    (click)="nextMessage(); pauseAutoSlide(); resumeAutoSlide()"
+                    aria-label="Siguiente" 
+                    class="text-white hover:text-gray-300 transition-colors cursor-pointer flex items-center justify-center">
+                    <i class='bx bx-chevron-right text-xl'></i>
+                </button>
+            </div>
+
+            <div class="hidden lg:block w-24"></div>
+        </div>
+    </div>
+</div>
