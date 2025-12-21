@@ -1,7 +1,11 @@
 @import './tailwind.css';
 @import 'animate.css';
 
+// componentes styles and animations
 
+.btn-primary-animate {
+    @apply bg-white text-black px-8 py-3 rounded-lg font-medium hover:bg-gray-200 transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg hover:shadow-white/20 active:scale-95;
+}
 
 /* ! Style to Slide Bar */
 
@@ -11,12 +15,25 @@
 
 // footer style
 
-.card-footer {
-    @apply bg-gray-800 rounded-lg aspect-square mb-2 flex items-center justify-center;
+.card-footer-link {
+    @apply bg-transparent rounded-lg aspect-square mb-2 flex items-center justify-center relative overflow-hidden;
 }
 
+.cover-image {
+    @apply absolute inset-0 w-full h-full object-cover z-0;
+}
 
-// hero section style
+.gradient-overlay {
+    @apply absolute inset-0 bg-gradient-to-b from-black/20 to-black/50 z-[1] pointer-events-none;
+}
+
+.text-title {
+    @apply text-white text-sm font-semibold z-[2] relative [text-shadow:2px_2px_4px_rgba(0,0,0,0.9),0_0_8px_rgba(0,0,0,0.5)];
+}
+
+.icon-animate {
+    @apply text-white hover:text-gray-300 transition-all duration-300 ease-in-out hover:scale-105  hover:shadow-white/20 active:scale-95;
+}
 
 
 
