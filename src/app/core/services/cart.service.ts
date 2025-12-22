@@ -1,4 +1,5 @@
-import { Injectable, signal, computed, inject } from '@angular/core';
+import { Injectable, signal, computed, inject, effect, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { CartItem } from '../models/cart-item.interface';
 import { Product } from '../models/product.interface';
 
@@ -6,7 +7,20 @@ import { Product } from '../models/product.interface';
   providedIn: 'root'
 })
 export class CartService {
-  private readonly cartItems = signal<CartItem[]>([]);
+  private static readonly STORAGE_KEY = 'good-threads-cart';
+  private readonly platformId = inject(PLATFORM_ID);
+  
+  private readonly cartItems = signal<CartItem[]>(this.loadCartFromStorage());
+
+  constructor() {
+    // Effect para guardar automáticamente en localStorage cuando cambie el carrito
+    effect(() => {
+      const items = this.cartItems();
+      if (isPlatformBrowser(this.platformId)) {
+        this.saveCartToStorage(items);
+      }
+    });
+  }
 
   readonly totalItems = computed(() => {
     return this.cartItems().reduce((total, item) => total + item.quantity, 0);
@@ -84,6 +98,7 @@ export class CartService {
 
   /**
    * Limpia todos los productos del carrito
+   * El effect automáticamente limpiará el localStorage
    */
   clearCart(): void {
     this.cartItems.set([]);
@@ -106,6 +121,66 @@ export class CartService {
   getProductQuantity(productId: number): number {
     const item = this.cartItems().find(item => item.product.id === productId);
     return item?.quantity ?? 0;
+  }
+
+  /**
+   * Carga el carrito desde localStorage si existe
+   * @returns Array de CartItem o array vacío si no hay datos o hay error
+   */
+  private loadCartFromStorage(): CartItem[] {
+    if (!isPlatformBrowser(this.platformId)) {
+      return [];
+    }
+
+    try {
+      const storedData = localStorage.getItem(CartService.STORAGE_KEY);
+      if (!storedData) {
+        return [];
+      }
+
+      const items = JSON.parse(storedData) as CartItem[];
+      // Validar que los datos sean un array válido
+      if (Array.isArray(items)) {
+        return items;
+      }
+      return [];
+    } catch (error) {
+      console.error('Error al cargar el carrito desde localStorage:', error);
+      // Si hay error, limpiar los datos corruptos
+      this.clearStorage();
+      return [];
+    }
+  }
+
+  /**
+   * Guarda el carrito en localStorage
+   * @param items - Array de items del carrito a guardar
+   */
+  private saveCartToStorage(items: CartItem[]): void {
+    if (!isPlatformBrowser(this.platformId)) {
+      return;
+    }
+
+    try {
+      localStorage.setItem(CartService.STORAGE_KEY, JSON.stringify(items));
+    } catch (error) {
+      console.error('Error al guardar el carrito en localStorage:', error);
+    }
+  }
+
+  /**
+   * Limpia los datos del carrito en localStorage
+   */
+  private clearStorage(): void {
+    if (!isPlatformBrowser(this.platformId)) {
+      return;
+    }
+
+    try {
+      localStorage.removeItem(CartService.STORAGE_KEY);
+    } catch (error) {
+      console.error('Error al limpiar el localStorage:', error);
+    }
   }
 }
 

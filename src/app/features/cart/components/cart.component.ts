@@ -19,7 +19,13 @@ export class CartComponent {
   readonly cartItems: Signal<CartItem[]> = this.cartService.getItems();
   
   readonly totalItems = this.cartService.totalItems;
-  readonly totalPrice = this.cartService.totalPrice;
+  readonly subtotal = this.cartService.totalPrice;
+  
+  // Costo de envío fijo
+  readonly shippingCost = 1.99;
+  
+  // Total incluyendo envío
+  readonly total = computed(() => this.subtotal() + this.shippingCost);
 
   readonly isEmpty = computed(() => this.cartItems().length === 0);
 
