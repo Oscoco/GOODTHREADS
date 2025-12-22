@@ -5,7 +5,7 @@
     @if (isLoading()) {
       <div class="flex items-center justify-center min-h-[60vh]">
         <div class="text-center">
-          <p class="text-xl text-gray-800">Cargando producto...</p>
+          <p class="text-xl text-gray-800">Loading product...</p>
         </div>
       </div>
     } @else if (errorMessage()) {
@@ -16,12 +16,12 @@
             <button 
               (click)="goBack()"
               class="px-6 py-3 bg-black text-white rounded-md hover:bg-gray-800 transition-colors">
-              Volver a productos
+              Back to products
             </button>
             <button 
               (click)="retryLoadProduct()"
               class="px-6 py-3 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors">
-              Reintentar
+              Retry
             </button>
           </div>
         </div>
@@ -32,7 +32,7 @@
           (click)="goBack()"
           class="mb-6 flex items-center gap-2 text-gray-600 hover:text-black transition-colors">
           <i class='bx bx-arrow-back text-2xl'></i>
-          <span>Volver</span>
+          <span>Back</span>
         </button>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
@@ -51,7 +51,7 @@
 
               <div class="inline-flex items-center bg-slate-100 py-1 px-3 rounded-md text-sm text-slate-600 shadow-sm">
                 <i class='bx bxs-star mr-2 text-yellow-500'></i>
-                <span>Destacado</span>
+                <span>Featured</span>
               </div>
 
               <h1 class="text-3xl lg:text-4xl font-bold text-black">
@@ -71,7 +71,7 @@
               }
 
               <div class="pt-6">
-                <label class="block text-sm font-semibold text-gray-900 mb-3">Talla</label>
+                <label class="block text-sm font-semibold text-gray-900 mb-3">Size</label>
                 <div class="flex flex-wrap gap-3">
                   @for (size of ['S', 'M', 'L', 'XL']; track size) {
                     <button
@@ -111,7 +111,7 @@
               </div>
 
               <div class="pt-6">
-                <label class="block text-sm font-semibold text-gray-900 mb-3">Cantidad</label>
+                <label class="block text-sm font-semibold text-gray-900 mb-3">Quantity</label>
                 <div class="flex items-center border border-gray-300 rounded-md w-fit">
                   <button
                     (click)="decreaseQuantity()"
@@ -136,9 +136,9 @@
                   [class.hover:bg-gray-800]="!isAddedToCart()"
                   class="flex-1 px-6 py-3 text-white rounded-md transition-colors font-semibold">
                   @if (isAddedToCart()) {
-                    ¡Añadido!
+                    Added!
                   } @else {
-                    Agregar al carrito
+                    Add to cart
                   }
                 </button>
                 <button 

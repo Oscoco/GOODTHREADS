@@ -1,6 +1,6 @@
 <section class="py-16 bg-gray-50">
   <div class="container mx-auto px-4">
-    <h2 class="text-4xl md:text-5xl font-bold text-black mb-12 text-center animate__animated animate__fadeInDown">Explora Nuestras Colecciones</h2>
+    <h2 class="text-4xl md:text-5xl font-bold text-black mb-12 text-center animate__animated animate__fadeInDown">Explore our collections</h2>
     
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       @for (category of categories; track category.id; let i = $index) {
@@ -22,7 +22,7 @@
             </h3>
             <p class="text-white text-lg mb-4 [text-shadow:1px_1px_2px_rgba(0,0,0,0.8)]">{{ category.description }}</p>
             <button class="btn-primary-animate">
-              Ver colección
+              View collection
               <i class='bx bx-chevron-right inline text-xl'></i>
             </button>
           </div>

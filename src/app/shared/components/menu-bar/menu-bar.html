@@ -31,7 +31,7 @@
     <button
       (click)="goToCart()"
       class="relative inline-flex items-center bg-white border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base md:mt-0 text-black transition-all cursor-pointer group">
-      <span class="hidden md:inline font-semibold">carrito</span>
+      <span class="hidden md:inline font-semibold">cart</span>
       <div class="relative">
         <i class='bx bx-cart text-xl md:ml-1 transition-transform group-hover:scale-110'></i>
         @if (totalItems() > 0) {
@@ -44,7 +44,7 @@
 
   </div>
 
-  <!-- Menú lateral -->
+  <!-- Side menu -->
   <div class="fixed inset-0 z-50 transition-opacity duration-300 ease-in-out" [class.opacity-0]="!isMenuOpen()"
     [class.pointer-events-none]="!isMenuOpen()" [class.opacity-100]="isMenuOpen()"
     [class.pointer-events-auto]="isMenuOpen()" (click)="closeMenu()">
@@ -65,6 +65,7 @@
             <i class='bx bx-arrow-back text-2xl'></i>
           </a>
           <a routerLink="/" (click)="closeMenu()" class="block bar-hover">Inicio</a>
+          <a href="/thank-you" class="block bar-hover">Agradecimientos</a>
           <a href="/products" class="block bar-hover">Ravve™</a>
           <a href="/products" class="block bar-hover">drops™</a>
           <a href="/products" class="block bar-hover">packs™</a>

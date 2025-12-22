@@ -29,4 +29,10 @@ export const routes: Routes = [
     title: 'GoodThreads - Checkout',
     data: { renderMode: 'client' }
   },
+  {
+    path: 'thank-you',
+    loadComponent: () => import('./pages/thank-you-page/thank-you-page.component').then(m => m.ThankYouPageComponent),
+    title: 'GoodThreads - Gracias por tu Compra',
+    data: { renderMode: 'client' }
+  },
 ];

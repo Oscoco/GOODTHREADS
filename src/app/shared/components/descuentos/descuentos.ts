@@ -8,10 +8,10 @@ import { Component, OnInit, OnDestroy, signal } from '@angular/core';
 })
 export class Descuentos implements OnInit, OnDestroy {
   messages = [
-    'Envío gratis desde $49 ¡Haz click aquí!',
-    '¡Nuevos productos disponibles! Descubre la colección',
-    'Descuento del 20% en tu primera compra',
-    'Síguenos en redes sociales y obtén ofertas exclusivas'
+    'Free shipping from $49! Click here!',
+    'New products available! Discover the collection',
+    '20% discount on your first purchase',
+    'Follow us on social media and get exclusive offers'
   ];
 
   currentIndex = signal(0);

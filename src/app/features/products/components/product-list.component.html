@@ -2,10 +2,10 @@
   <div class="mb-8">
     <div class="flex items-center justify-between mb-4">
       <div class="text-center flex-1">
-        <h1 class="text-4xl font-bold mb-2 text-gray-800">Todos los Productos</h1>
+        <h1 class="text-4xl font-bold mb-2 text-gray-800">All products</h1>
         @if (!isLoading() && !errorMessage()) {
           <p class="text-gray-600 text-base">
-            Mostrando {{ products().length }} producto{{ products().length !== 1 ? 's' : '' }}
+            Showing {{ products().length }} product{{ products().length !== 1 ? 's' : '' }}
           </p>
         }
       </div>
