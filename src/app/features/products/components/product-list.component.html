@@ -1,0 +1,59 @@
+<div class="p-8 max-w-7xl mx-auto">
+  <div class="mb-8">
+    <div class="flex items-center justify-between mb-4">
+      <div class="text-center flex-1">
+        <h1 class="text-4xl font-bold mb-2 text-gray-800">Todos los Productos</h1>
+        @if (!isLoading() && !errorMessage()) {
+          <p class="text-gray-600 text-base">
+            Mostrando {{ products().length }} producto{{ products().length !== 1 ? 's' : '' }}
+          </p>
+        }
+      </div>
+      @if (!isLoading() && !errorMessage()) {
+        <div class="flex items-center gap-2">
+          <button
+            (click)="toggleGridColumns()"
+            class="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-md hover:bg-gray-50 transition-colors"
+            [class.bg-gray-100]="gridColumns() === 2"
+            [class.bg-white]="gridColumns() === 4">
+            @if (gridColumns() === 4) {
+              <i class='bx bx-square text-gray-600'></i>
+            } @else {
+              <i class='bx bx-grid-alt text-gray-600'></i>
+            }
+            <span class="text-sm text-gray-700">{{ gridColumns() }} columns</span>
+          </button>
+        </div>
+      }
+    </div>
+  </div>
+
+  @if (isLoading()) {
+    <div class="text-center py-12 px-8">
+      <p class="text-xl">Loading products...</p>
+    </div>
+  } @else if (errorMessage()) {
+    <div class="flex flex-col justify-center items-center text-center py-12 px-8">
+      <p class="text-xl mb-4">{{ errorMessage() }}</p>
+      <button 
+        (click)="loadProducts()"
+        class="btn-secondary-animate">
+        <i class='bx bx-refresh text-xl text-white'></i>
+        <span>Retry</span>
+      </button>
+    </div>
+  } @else {
+    <div 
+      class="grid gap-6"
+      [ngClass]="gridClass()">
+      @for (product of products(); track product.id) {
+        <app-product-card [product]="product"></app-product-card>
+      } @empty {
+        <div class="text-center py-12 px-8 col-span-full">
+          <p class="text-xl text-gray-600">No products available.</p>
+        </div>
+      }
+    </div>
+  }
+</div>
+

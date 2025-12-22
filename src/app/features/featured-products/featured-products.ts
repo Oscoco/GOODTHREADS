@@ -1,9 +1,10 @@
 import { Component, AfterViewInit, OnDestroy, signal, ElementRef, ViewChildren, QueryList, afterNextRender, Inject, PLATFORM_ID } from '@angular/core';
 import { NgClass, isPlatformBrowser } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-featured-products',
-  imports: [NgClass],
+  imports: [NgClass, RouterLink],
   templateUrl: './featured-products.html',
   styleUrl: './featured-products.scss',
 })

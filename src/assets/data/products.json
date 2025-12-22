@@ -1,0 +1,163 @@
+[
+  {
+    "id": 1,
+    "name": "Sudadera Jujutsu Kaisen",
+    "price": 42.99,
+    "image": "/assets/images/sudadera1.jpg",
+    "category": "JUJUTSU KAISEN",
+    "description": "Colección exclusiva de Jujutsu Kaisen"
+  },
+  {
+    "id": 2,
+    "name": "Sudadera One Piece",
+    "price": 49.99,
+    "image": "/assets/images/sudadera1.jpg",
+    "category": "ONE PIECE",
+    "description": "Nuevos diseños de One Piece"
+  },
+  {
+    "id": 3,
+    "name": "Sudadera Naruto",
+    "price": 49.99,
+    "image": "/assets/images/sudadera1.jpg",
+    "category": "NARUTO",
+    "description": "Edición limitada de Naruto"
+  },
+  {
+    "id": 4,
+    "name": "Sudadera Dandadan",
+    "price": 49.99,
+    "image": "/assets/images/sudadera1.jpg",
+    "category": "DANDADAN",
+    "description": "Últimas tendencias de Dandadan"
+  },
+  {
+    "id": 5,
+    "name": "Sudadera Gojo Satoru",
+    "price": 45.99,
+    "image": "/assets/images/sudadera1.jpg",
+    "category": "JUJUTSU KAISEN",
+    "description": "Diseño exclusivo de Gojo Satoru"
+  },
+  {
+    "id": 6,
+    "name": "Sudadera Monkey D. Luffy",
+    "price": 48.99,
+    "image": "/assets/images/sudadera1.jpg",
+    "category": "ONE PIECE",
+    "description": "Edición especial de Luffy"
+  },
+  {
+    "id": 7,
+    "name": "Sudadera Itachi Uchiha",
+    "price": 47.99,
+    "image": "/assets/images/sudadera1.jpg",
+    "category": "NARUTO",
+    "description": "Colección Itachi Uchiha"
+  },
+  {
+    "id": 8,
+    "name": "Sudadera Tanjiro Kamado",
+    "price": 44.99,
+    "image": "/assets/images/sudadera1.jpg",
+    "category": "DEMON SLAYER",
+    "description": "Diseño de Tanjiro Kamado"
+  },
+  {
+    "id": 9,
+    "name": "Sudadera Zenitsu Agatsuma",
+    "price": 43.99,
+    "image": "/assets/images/sudadera1.jpg",
+    "category": "DEMON SLAYER",
+    "description": "Edición Zenitsu Agatsuma"
+  },
+  {
+    "id": 10,
+    "name": "Sudadera Inosuke Hashibira",
+    "price": 46.99,
+    "image": "/assets/images/sudadera1.jpg",
+    "category": "DEMON SLAYER",
+    "description": "Colección Inosuke Hashibira"
+  },
+  {
+    "id": 11,
+    "name": "Sudadera Roronoa Zoro",
+    "price": 49.99,
+    "image": "/assets/images/sudadera1.jpg",
+    "category": "ONE PIECE",
+    "description": "Diseño exclusivo de Zoro"
+  },
+  {
+    "id": 12,
+    "name": "Sudadera Sasuke Uchiha",
+    "price": 48.99,
+    "image": "/assets/images/sudadera1.jpg",
+    "category": "NARUTO",
+    "description": "Edición limitada Sasuke"
+  },
+  {
+    "id": 13,
+    "name": "Sudadera Yuji Itadori",
+    "price": 45.99,
+    "image": "/assets/images/sudadera1.jpg",
+    "category": "JUJUTSU KAISEN",
+    "description": "Colección Yuji Itadori"
+  },
+  {
+    "id": 14,
+    "name": "Sudadera Sanji Vinsmoke",
+    "price": 47.99,
+    "image": "/assets/images/sudadera1.jpg",
+    "category": "ONE PIECE",
+    "description": "Diseño de Sanji Vinsmoke"
+  },
+  {
+    "id": 15,
+    "name": "Sudadera Kakashi Hatake",
+    "price": 46.99,
+    "image": "/assets/images/sudadera1.jpg",
+    "category": "NARUTO",
+    "description": "Edición especial Kakashi"
+  },
+  {
+    "id": 16,
+    "name": "Sudadera Megumi Fushiguro",
+    "price": 44.99,
+    "image": "/assets/images/sudadera1.jpg",
+    "category": "JUJUTSU KAISEN",
+    "description": "Colección Megumi Fushiguro"
+  },
+  {
+    "id": 17,
+    "name": "Sudadera Nezuko Kamado",
+    "price": 45.99,
+    "image": "/assets/images/sudadera1.jpg",
+    "category": "DEMON SLAYER",
+    "description": "Diseño exclusivo Nezuko"
+  },
+  {
+    "id": 18,
+    "name": "Sudadera Shanks",
+    "price": 50.99,
+    "image": "/assets/images/sudadera1.jpg",
+    "category": "ONE PIECE",
+    "description": "Edición limitada Shanks"
+  },
+  {
+    "id": 19,
+    "name": "Sudadera Minato Namikaze",
+    "price": 48.99,
+    "image": "/assets/images/sudadera1.jpg",
+    "category": "NARUTO",
+    "description": "Colección Minato Namikaze"
+  },
+  {
+    "id": 20,
+    "name": "Sudadera Nobara Kugisaki",
+    "price": 44.99,
+    "image": "/assets/images/sudadera1.jpg",
+    "category": "JUJUTSU KAISEN",
+    "description": "Diseño de Nobara Kugisaki"
+  }
+]
+
