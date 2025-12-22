@@ -29,9 +29,17 @@
     </a>
 
     <button
-      class="inline-flex items-center bg-white border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base md:mt-0 text-black transition-colors">
+      (click)="goToCart()"
+      class="relative inline-flex items-center bg-white border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base md:mt-0 text-black transition-all cursor-pointer group">
       <span class="hidden md:inline font-semibold">carrito</span>
-      <i class='bx bx-cart text-xl md:ml-1'></i>
+      <div class="relative">
+        <i class='bx bx-cart text-xl md:ml-1 transition-transform group-hover:scale-110'></i>
+        @if (totalItems() > 0) {
+          <span class="absolute -top-2 -right-2 bg-red-600 text-white text-xs font-bold rounded-full h-5 min-w-[1.25rem] flex items-center justify-center px-1.5 shadow-lg transform transition-all duration-300 scale-100 group-hover:scale-110">
+            {{ totalItems() > 99 ? '99+' : totalItems() }}
+          </span>
+        }
+      </div>
     </button>
 
   </div>
@@ -52,7 +60,10 @@
 
 
         <nav class="flex-1 overflow-y-auto py-6 sm:text-2xl text-xl">
-          <br><br>
+          <br>
+          <a (click)="closeMenu()" class="block bar-hover">
+            <i class='bx bx-arrow-back text-2xl'></i>
+          </a>
           <a routerLink="/" (click)="closeMenu()" class="block bar-hover">Inicio</a>
           <a href="#" class="block bar-hover">Ravve™</a>
           <a href="#" class="block bar-hover">drops™</a>

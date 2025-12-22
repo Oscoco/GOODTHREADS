@@ -1,5 +1,6 @@
-import { Component, signal } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, signal, inject } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
+import { CartService } from '../../../core/services/cart.service';
 
 @Component({
   selector: 'app-menu-bar',
@@ -17,9 +18,15 @@ import { RouterLink } from '@angular/router';
   `
 })
 export class MenuBar {
+  private readonly router = inject(Router);
+  private readonly cartService = inject(CartService);
+  
   isMenuOpen = signal(false);
   isSearchOpen = signal(false);
   searchQuery = signal('');
+  
+  // Signal para obtener el total de items en el carrito
+  readonly totalItems = this.cartService.totalItems;
 
   toggleMenu() {
     this.isMenuOpen.update(value => !value);
@@ -45,5 +52,9 @@ export class MenuBar {
   onSearchChange(event: Event) {
     const target = event.target as HTMLInputElement;
     this.searchQuery.set(target.value);
+  }
+
+  goToCart(): void {
+    this.router.navigate(['/cart']);
   }
 }

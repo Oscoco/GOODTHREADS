@@ -129,8 +129,17 @@
 
               <div class="flex flex-col sm:flex-row gap-4 pt-6">
                 <button 
-                  class="flex-1 px-6 py-3 bg-black text-white rounded-md hover:bg-gray-800 transition-colors font-semibold">
-                  Agregar al carrito
+                  (click)="addToCart()"
+                  [class.bg-green-600]="isAddedToCart()"
+                  [class.hover:bg-green-700]="isAddedToCart()"
+                  [class.bg-black]="!isAddedToCart()"
+                  [class.hover:bg-gray-800]="!isAddedToCart()"
+                  class="flex-1 px-6 py-3 text-white rounded-md transition-colors font-semibold">
+                  @if (isAddedToCart()) {
+                    ¡Añadido!
+                  } @else {
+                    Agregar al carrito
+                  }
                 </button>
                 <button 
                   class="px-6 py-3 border-2 border-black text-black rounded-md hover:bg-black hover:text-white transition-colors font-semibold">

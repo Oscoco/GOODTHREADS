@@ -1,6 +1,7 @@
 import { Component, OnInit, inject, signal } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from '../../../../core/services/product.service';
+import { CartService } from '../../../../core/services/cart.service';
 import { Product } from '../../../../core/models/product.interface';
 import { catchError, finalize } from 'rxjs/operators';
 import { of } from 'rxjs';
@@ -18,6 +19,7 @@ export class ProductDetailComponent implements OnInit {
   private readonly route = inject(ActivatedRoute);
   private readonly router = inject(Router);
   private readonly productService = inject(ProductService);
+  private readonly cartService = inject(CartService);
 
   // Signals
   product = signal<Product | null>(null);
@@ -28,6 +30,9 @@ export class ProductDetailComponent implements OnInit {
   selectedSize = signal<string>('S');
   selectedFit = signal<string>('Regular Fit');
   quantity = signal<number>(1);
+  
+  // Estado del botón de carrito
+  isAddedToCart = signal<boolean>(false);
 
   ngOnInit(): void {
     this.loadProduct();
@@ -95,6 +100,22 @@ export class ProductDetailComponent implements OnInit {
 
   increaseQuantity(): void {
     this.quantity.update(q => q + 1);
+  }
+
+  addToCart(): void {
+    const currentProduct = this.product();
+    
+    if (!currentProduct) {
+      return;
+    }
+
+    this.cartService.addProduct(currentProduct, this.quantity());
+    
+    this.isAddedToCart.set(true);
+    
+    setTimeout(() => {
+      this.isAddedToCart.set(false);
+    }, 2000);
   }
 }
 
