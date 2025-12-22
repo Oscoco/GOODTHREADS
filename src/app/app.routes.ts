@@ -11,4 +11,9 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/products-page/products-page.component').then(m => m.ProductsPageComponent),
     title: 'GoodThreads - Todos los productos'
   },
+  {
+    path: 'products/:id',
+    loadComponent: () => import('./features/products/components/product-detail/product-detail.component').then(m => m.ProductDetailComponent),
+    title: 'GoodThreads - Detalle del producto'
+  },
 ];

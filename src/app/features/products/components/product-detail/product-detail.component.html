@@ -1,0 +1,149 @@
+<div class="flex flex-col min-h-screen bg-white">
+  <app-menu-bar></app-menu-bar>
+  
+  <main class="grow">
+    @if (isLoading()) {
+      <div class="flex items-center justify-center min-h-[60vh]">
+        <div class="text-center">
+          <p class="text-xl text-gray-800">Cargando producto...</p>
+        </div>
+      </div>
+    } @else if (errorMessage()) {
+      <div class="flex flex-col items-center justify-center min-h-[60vh] px-4">
+        <div class="text-center max-w-md">
+          <p class="text-xl text-red-600 mb-6">{{ errorMessage() }}</p>
+          <div class="flex gap-4 justify-center">
+            <button 
+              (click)="goBack()"
+              class="px-6 py-3 bg-black text-white rounded-md hover:bg-gray-800 transition-colors">
+              Volver a productos
+            </button>
+            <button 
+              (click)="retryLoadProduct()"
+              class="px-6 py-3 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors">
+              Reintentar
+            </button>
+          </div>
+        </div>
+      </div>
+    } @else if (product()) {
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+        <button 
+          (click)="goBack()"
+          class="mb-6 flex items-center gap-2 text-gray-600 hover:text-black transition-colors">
+          <i class='bx bx-arrow-back text-2xl'></i>
+          <span>Volver</span>
+        </button>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+          <div class="relative aspect-square overflow-hidden rounded-lg bg-gray-100">
+            <img 
+              [src]="product()!.image" 
+              [alt]="product()!.name"
+              class="w-full h-full object-cover">
+          </div>
+
+          <div class="flex flex-col justify-center">
+            <div class="space-y-4">
+              <p class="text-sm uppercase tracking-wide text-red-600 font-bold">
+                {{ product()!.category }}
+              </p>
+
+              <div class="inline-flex items-center bg-slate-100 py-1 px-3 rounded-md text-sm text-slate-600 shadow-sm">
+                <i class='bx bxs-star mr-2 text-yellow-500'></i>
+                <span>Destacado</span>
+              </div>
+
+              <h1 class="text-3xl lg:text-4xl font-bold text-black">
+                {{ product()!.name }}
+              </h1>
+
+              <p class="text-3xl lg:text-4xl font-bold text-black">
+                ${{ product()!.price }}
+              </p>
+
+              @if (product()!.description) {
+                <div class="pt-4 border-t border-gray-200">
+                  <p class="text-gray-700 leading-relaxed">
+                    {{ product()!.description }}
+                  </p>
+                </div>
+              }
+
+              <div class="pt-6">
+                <label class="block text-sm font-semibold text-gray-900 mb-3">Talla</label>
+                <div class="flex flex-wrap gap-3">
+                  @for (size of ['S', 'M', 'L', 'XL']; track size) {
+                    <button
+                      (click)="selectSize(size)"
+                      [class.bg-black]="selectedSize() === size"
+                      [class.text-white]="selectedSize() === size"
+                      [class.bg-white]="selectedSize() !== size"
+                      [class.text-gray-700]="selectedSize() !== size"
+                      [class.border-gray-300]="selectedSize() !== size"
+                      class="px-4 py-2 border rounded-md font-medium transition-colors hover:border-gray-400">
+                      {{ size }}
+                    </button>
+                  }
+                </div>
+                <div class="flex flex-wrap gap-3 mt-3">
+                  <button
+                    (click)="selectFit('Regular Fit')"
+                    [class.bg-black]="selectedFit() === 'Regular Fit'"
+                    [class.text-white]="selectedFit() === 'Regular Fit'"
+                    [class.bg-white]="selectedFit() !== 'Regular Fit'"
+                    [class.text-gray-700]="selectedFit() !== 'Regular Fit'"
+                    [class.border-gray-300]="selectedFit() !== 'Regular Fit'"
+                    class="px-4 py-2 border rounded-md font-medium transition-colors hover:border-gray-400">
+                    Regular Fit
+                  </button>
+                  <button
+                    (click)="selectFit('Oversize')"
+                    [class.bg-black]="selectedFit() === 'Oversize'"
+                    [class.text-white]="selectedFit() === 'Oversize'"
+                    [class.bg-white]="selectedFit() !== 'Oversize'"
+                    [class.text-gray-700]="selectedFit() !== 'Oversize'"
+                    [class.border-gray-300]="selectedFit() !== 'Oversize'"
+                    class="px-4 py-2 border rounded-md font-medium transition-colors hover:border-gray-400">
+                    Oversize
+                  </button>
+                </div>
+              </div>
+
+              <div class="pt-6">
+                <label class="block text-sm font-semibold text-gray-900 mb-3">Cantidad</label>
+                <div class="flex items-center border border-gray-300 rounded-md w-fit">
+                  <button
+                    (click)="decreaseQuantity()"
+                    class="px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors">
+                    -
+                  </button>
+                  <span class="px-6 py-2 text-gray-900 font-medium">{{ quantity() }}</span>
+                  <button
+                    (click)="increaseQuantity()"
+                    class="px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors">
+                    +
+                  </button>
+                </div>
+              </div>
+
+              <div class="flex flex-col sm:flex-row gap-4 pt-6">
+                <button 
+                  class="flex-1 px-6 py-3 bg-black text-white rounded-md hover:bg-gray-800 transition-colors font-semibold">
+                  Agregar al carrito
+                </button>
+                <button 
+                  class="px-6 py-3 border-2 border-black text-black rounded-md hover:bg-black hover:text-white transition-colors font-semibold">
+                  <i class='bx bx-heart text-xl'></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    }
+  </main>
+  
+  <app-footer></app-footer>
+</div>
+

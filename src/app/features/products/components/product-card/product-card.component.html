@@ -8,7 +8,9 @@
       <i class='bx bx-heart text-xl text-black'></i>
     </button>
     <!-- View More Overlay -->
-    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out flex items-center justify-center z-5">
+    <div 
+      (click)="navigateToDetail()"
+      class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out flex items-center justify-center z-5 cursor-pointer">
       <div class="transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 ease-out flex items-center gap-2 text-white font-semibold text-lg group-hover:scale-105">
         <span>View details</span>
         <i class='bx bx-arrow-right text-2xl transition-transform duration-300 group-hover:translate-x-1'></i>

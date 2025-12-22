@@ -12,6 +12,7 @@ export const ASSETS_PATHS = {
     },
     sudadera: {
       sudadera1: `${IMAGES_BASE_PATH}/sudadera1.jpg`,
+      jujutsu1: `${IMAGES_BASE_PATH}/jujutsu1.png`,
     },
     categorias: {
       deportes: `${IMAGES_BASE_PATH}/deportes.jpg`,

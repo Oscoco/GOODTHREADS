@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { Product } from '../../../../core/models/product.interface';
 
 @Component({
@@ -10,5 +11,11 @@ import { Product } from '../../../../core/models/product.interface';
 })
 export class ProductCardComponent {
   @Input({ required: true }) product!: Product;
+
+  constructor(private router: Router) {}
+
+  navigateToDetail(): void {
+    this.router.navigate(['/products', this.product.id]);
+  }
 }
 
