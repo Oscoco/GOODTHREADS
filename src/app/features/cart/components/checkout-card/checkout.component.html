@@ -1,0 +1,295 @@
+<div class="flex flex-col min-h-screen bg-white">
+  <app-menu-bar></app-menu-bar>
+  
+  <main class="grow">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <button
+        (click)="goBackToCart()"
+        class="mb-6 flex items-center gap-2 text-gray-600 hover:text-black transition-colors">
+        <i class='bx bx-arrow-back text-2xl'></i>
+        <span>Volver al carrito</span>
+      </button>
+
+      <h1 class="text-3xl lg:text-4xl font-bold text-black mb-8">Finalizar Compra</h1>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Formulario de Checkout -->
+        <div class="lg:col-span-2">
+          <form [formGroup]="checkoutForm" (ngSubmit)="processPayment()" class="space-y-8">
+            <div class="bg-gray-50 p-6 rounded-lg">
+              <div class="flex justify-between items-center mb-4">
+                <h2 class="text-xl font-bold text-black">Contacto</h2>
+                <a href="#" class="text-sm text-gray-600 hover:text-black">Iniciar sesión</a>
+              </div>
+              <div>
+                <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
+                  Correo electrónico
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  formControlName="email"
+                  class="input-primary"
+                  [class.border-red-500]="hasError('email')">
+                @if (hasError('email')) {
+                  <p class="input-error">{{ getErrorMessage('email') }}</p>
+                }
+              </div>
+            </div>
+
+            <div class="bg-gray-50 p-6 rounded-lg">
+              <h2 class="text-xl font-bold text-black mb-4">Entrega</h2>
+              
+              <div class="space-y-4">
+                <div>
+                  <label for="country" class="block text-sm font-medium text-gray-700 mb-2">
+                    País / Región
+                  </label>
+                  <select
+                    id="country"
+                    formControlName="country"
+                    class="input-primary"
+                    [class.border-red-500]="hasError('country')">
+                    <option value="El Salvador">El Salvador</option>
+                    <option value="Guatemala">Guatemala</option>
+                    <option value="Honduras">Honduras</option>
+                    <option value="Nicaragua">Nicaragua</option>
+                    <option value="Costa Rica">Costa Rica</option>
+                  </select>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label for="firstName" class="block text-sm font-medium text-gray-700 mb-2">
+                      Nombre
+                    </label>
+                    <input
+                      type="text"
+                      id="firstName"
+                      formControlName="firstName"
+                      class="input-primary"
+                      [class.border-red-500]="hasError('firstName')">
+                    @if (hasError('firstName')) {
+                      <p class="input-error">{{ getErrorMessage('firstName') }}</p>
+                    }
+                  </div>
+                  <div>
+                    <label for="lastName" class="block text-sm font-medium text-gray-700 mb-2">
+                      Apellidos
+                    </label>
+                    <input
+                      type="text"
+                      id="lastName"
+                      formControlName="lastName"
+                      class="input-primary"
+                      [class.border-red-500]="hasError('lastName')">
+                    @if (hasError('lastName')) {
+                      <p class="input-error">{{ getErrorMessage('lastName') }}</p>
+                    }
+                  </div>
+                </div>
+
+                <div>
+                  <label for="address" class="block text-sm font-medium text-gray-700 mb-2">
+                    Dirección
+                  </label>
+                  <input
+                    type="text"
+                    id="address"
+                    formControlName="address"
+                    class="input-primary"
+                    [class.border-red-500]="hasError('address')">
+                  @if (hasError('address')) {
+                    <p class="input-error">{{ getErrorMessage('address') }}</p>
+                  }
+                </div>
+                <div>
+                  <label for="apartment" class="block text-sm font-medium text-gray-700 mb-2">
+                    Casa, apartamento, etc. (opcional)
+                  </label>
+                  <input
+                    type="text"
+                    id="apartment"
+                    formControlName="apartment"
+                    class="input-primary">
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  <div>
+                    <label for="city" class="block text-sm font-medium text-gray-700 mb-2">
+                      Ciudad
+                    </label>
+                    <input
+                      type="text"
+                      id="city"
+                      formControlName="city"
+                      class="input-primary"
+                      [class.border-red-500]="hasError('city')">
+                    @if (hasError('city')) {
+                      <p class="input-error">{{ getErrorMessage('city') }}</p>
+                    }
+                  </div>
+                  <div>
+                    <label for="postalCode" class="block text-sm font-medium text-gray-700 mb-2">
+                      Código postal (opcional)
+                    </label>
+                    <input
+                      type="text"
+                      id="postalCode"
+                      formControlName="postalCode"
+                      class="input-primary">
+                  </div>
+                  <div>
+                    <label for="region" class="block text-sm font-medium text-gray-700 mb-2">
+                      Región
+                    </label>
+                    <select
+                      id="region"
+                      formControlName="region"
+                      class="input-primary"
+                      [class.border-red-500]="hasError('region')">
+                      <option value="San Salvador">San Salvador</option>
+                      <option value="Santa Ana">Santa Ana</option>
+                      <option value="San Miguel">San Miguel</option>
+                      <option value="La Libertad">La Libertad</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div>
+                  <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">
+                    Teléfono
+                    <i class='bx bx-help-circle text-gray-400 ml-1'></i>
+                  </label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    formControlName="phone"
+                    class="input-primary"
+                    [class.border-red-500]="hasError('phone')">
+                  @if (hasError('phone')) {
+                    <p class="input-error">{{ getErrorMessage('phone') }}</p>
+                  }
+                </div>
+
+                <div class="flex items-center">
+                  <input
+                    type="checkbox"
+                    id="saveInfo"
+                    formControlName="saveInfo"
+                    class="w-4 h-4 text-black border-gray-300 rounded focus:ring-black">
+                  <label for="saveInfo" class="ml-2 text-sm text-gray-700">
+                    Guardar mi información y consultar más rápidamente la próxima vez
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-gray-50 p-6 rounded-lg">
+              <h2 class="text-xl font-bold text-black mb-4">Métodos de envío</h2>
+              <div class="flex items-center justify-between p-4 border border-gray-300 rounded-md">
+                <span class="font-medium">Envío</span>
+                <span class="font-bold">${{ shippingCost.toFixed(2) }}</span>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div class="lg:col-span-1">
+          <div class="sticky top-24 bg-white border border-gray-200 rounded-lg p-6">
+            <h2 class="text-xl font-bold text-black mb-6">Resumen del Pedido</h2>
+            
+            <div class="space-y-4 mb-6">
+              @for (item of cartItems(); track item.product.id) {
+                <div class="flex gap-4">
+                  <div class="relative shrink-0">
+                    <img
+                      [src]="item.product.image"
+                      [alt]="item.product.name"
+                      class="w-20 h-20 object-cover rounded">
+                    <span class="absolute -top-2 -right-2 bg-black text-white text-xs font-bold rounded-full h-6 w-6 flex items-center justify-center">
+                      {{ item.quantity }}
+                    </span>
+                  </div>
+                  <div class="flex-1">
+                    <p class="font-semibold text-black">{{ item.product.name }}</p>
+                    <p class="text-sm text-gray-600">Negro / S / Regular Fit</p>
+                    <p class="text-sm font-semibold text-black mt-1">${{ item.product.price.toFixed(2) }}</p>
+                  </div>
+                </div>
+              }
+            </div>
+
+            <div class="mb-6">
+              <label for="discountCode" class="block text-sm font-medium text-gray-700 mb-2 text-center">
+                Código de descuento
+              </label>
+              <div class="flex flex-col gap-2">
+                <input
+                  type="text"
+                  id="discountCode"
+                  [(ngModel)]="discountCode"
+                  placeholder="Ingresa tu código"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black text-sm">
+                <button
+                  type="button"
+                  (click)="applyDiscount()"
+                  class="w-full bg-black text-white px-6 py-2 rounded-md hover:bg-gray-800 transition-colors font-semibold">
+                  Aplicar
+                </button>
+              </div>
+            </div>
+
+            <div class="space-y-3 mb-6 border-t border-gray-200 pt-4">
+              <div class="flex justify-between text-gray-700">
+                <span>Subtotal</span>
+                <span class="font-semibold">${{ subtotal().toFixed(2) }}</span>
+              </div>
+              <div class="flex justify-between text-gray-700">
+                <span>Envío</span>
+                <span class="font-semibold">${{ shippingCost.toFixed(2) }}</span>
+              </div>
+              <div class="border-t border-gray-200 pt-3">
+                <div class="flex justify-between text-2xl font-bold text-black mb-2">
+                  <span>Total</span>
+                  <span>USD ${{ finalTotal().toFixed(2) }}</span>
+                </div>
+              </div>
+            </div>
+
+            <button
+              type="button"
+              (click)="processPayment()"
+              class="btn-secondary-animate w-full flex items-center justify-center">
+              Completar Pedido
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+  <app-footer></app-footer>
+
+  <!-- Loader durante el procesamiento del pago -->
+  @if (isProcessingPayment()) {
+    <div class="fixed inset-0 z-[90] flex items-center justify-center bg-black/50 backdrop-blur-sm">
+      <div class="bg-white rounded-lg shadow-2xl p-8 flex flex-col items-center">
+        <app-loader></app-loader>
+        <p class="mt-6 text-lg font-semibold text-gray-900">Procesando pago...</p>
+        <p class="mt-2 text-sm text-gray-600">Validando información de pago</p>
+      </div>
+    </div>
+  }
+
+  <!-- Modal de Pago Exitoso -->
+  @if (showPaymentSuccess()) {
+    <app-pay-success
+      [totalAmount]="finalTotal()"
+      [transactionId]="transactionId()"
+      [customerName]="customerName()"
+      (closeModal)="closePaymentSuccess()">
+    </app-pay-success>
+  }
+</div>
+

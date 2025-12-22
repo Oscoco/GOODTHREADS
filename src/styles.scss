@@ -41,4 +41,18 @@
 
 
 
+// inputs styles
+
+.input-primary {
+    @apply w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black;
+}
+
+.input-error {
+    @apply mt-1 text-sm text-red-600;
+}
+
+.input-success {
+    @apply mt-1 text-sm text-green-600;
+}
+
 

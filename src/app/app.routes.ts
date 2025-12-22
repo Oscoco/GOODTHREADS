@@ -25,7 +25,7 @@ export const routes: Routes = [
   },
   {
     path: 'checkout',
-    loadComponent: () => import('./features/cart/components/cart.component').then(m => m.CartComponent),
+    loadComponent: () => import('./features/cart/components/checkout-card/checkout.component').then(m => m.CheckoutComponent),
     title: 'GoodThreads - Checkout',
     data: { renderMode: 'client' }
   },
