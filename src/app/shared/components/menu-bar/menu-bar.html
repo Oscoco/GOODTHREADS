@@ -1,59 +1,55 @@
 <header class="sticky top-0 z-50 w-full bg-black border-white shadow-md">
   <div class="container mx-auto sm:px-2 px-6 h-16 flex items-center justify-between">
-    
-    <button 
-      (click)="toggleMenu()"
-      aria-label="Abrir menú"
-      class="flex flex-col justify-center space-y-1.5 w-6 h-6 cursor-pointer">
-      <span 
-        class="block w-6 h-0.5 bg-white rounded-full transition-all duration-300"
-        [class.rotate-45]="isMenuOpen()"
-        [class.translate-y-2]="isMenuOpen()">
-      </span>
-      <span 
-        class="block w-6 h-0.5 bg-white rounded-full transition-all duration-300"
-        [class.opacity-0]="isMenuOpen()">
-      </span>
-      <span 
-        class="block w-6 h-0.5 bg-white rounded-full transition-all duration-300"
-        [class.-rotate-45]="isMenuOpen()"
-        [class.-translate-y-2]="isMenuOpen()">
-      </span>
-    </button>
-  
+
+
+
+    <div class="flex items-center space-x-4">
+
+      <button (click)="toggleMenu()" aria-label="Abrir menú"
+        class="flex flex-col justify-center space-y-1.5 w-6 h-6 cursor-pointer">
+        <span class="block w-6 h-0.5 bg-white rounded-full transition-all duration-300" [class.rotate-45]="isMenuOpen()"
+          [class.translate-y-2]="isMenuOpen()">
+        </span>
+        <span class="block w-6 h-0.5 bg-white rounded-full transition-all duration-300"
+          [class.opacity-0]="isMenuOpen()">
+        </span>
+        <span class="block w-6 h-0.5 bg-white rounded-full transition-all duration-300"
+          [class.-rotate-45]="isMenuOpen()" [class.-translate-y-2]="isMenuOpen()">
+        </span>
+      </button>
+
+      <button (click)="openSearch()"
+        class="m-0 pt-2 hover:text-gray-300 transition-colors bg-transparent border-0 cursor-pointer">
+        <i class='bx bx-search text-2xl text-white m-0 p-0'></i>
+      </button>
+    </div>
+
     <a routerLink="/" class="text-xl font-bold tracking-tighter text-white uppercase">
       GOODTHREADS
     </a>
-  
-    <button class="inline-flex items-center bg-white border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base md:mt-0 text-black transition-colors">
-      <span class="hidden md:inline font-semibold">Favoritos</span>
-      <i class='bx bx-heart text-xl md:ml-1'></i>
+
+    <button
+      class="inline-flex items-center bg-white border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base md:mt-0 text-black transition-colors">
+      <span class="hidden md:inline font-semibold">carrito</span>
+      <i class='bx bx-cart text-xl md:ml-1'></i>
     </button>
-  
+
   </div>
 
   <!-- Menú lateral -->
-  <div 
-    class="fixed inset-0 z-50 transition-opacity duration-300 ease-in-out"
-    [class.opacity-0]="!isMenuOpen()"
-    [class.pointer-events-none]="!isMenuOpen()"
-    [class.opacity-100]="isMenuOpen()"
-    [class.pointer-events-auto]="isMenuOpen()"
-    (click)="closeMenu()">
-    
-    <div 
-      class="fixed inset-0 bg-black/50 transition-opacity duration-300 ease-in-out"
-      [class.opacity-0]="!isMenuOpen()"
+  <div class="fixed inset-0 z-50 transition-opacity duration-300 ease-in-out" [class.opacity-0]="!isMenuOpen()"
+    [class.pointer-events-none]="!isMenuOpen()" [class.opacity-100]="isMenuOpen()"
+    [class.pointer-events-auto]="isMenuOpen()" (click)="closeMenu()">
+
+    <div class="fixed inset-0 bg-black/50 transition-opacity duration-300 ease-in-out" [class.opacity-0]="!isMenuOpen()"
       [class.opacity-100]="isMenuOpen()">
     </div>
-    
-    <div 
+
+    <div
       class="fixed left-0 top-0 h-screen sm:w-100 w-80 bg-black text-white shadow-xl transform transition-transform duration-300 ease-in-out"
-      [class.-translate-x-full]="!isMenuOpen()"
-      [class.translate-x-0]="isMenuOpen()"
-      (click)="$event.stopPropagation()">
+      [class.-translate-x-full]="!isMenuOpen()" [class.translate-x-0]="isMenuOpen()" (click)="$event.stopPropagation()">
       <div class="flex flex-col h-full">
-        
+
 
         <nav class="flex-1 overflow-y-auto py-6 sm:text-2xl text-xl">
           <br><br>
@@ -77,18 +73,6 @@
             <span>Complementos</span>
             <i class='bx bx-chevron-right'></i>
           </a>
-          <a href="#" class="flex items-center justify-between bar-hover">
-            <span>Deportes</span>
-            <i class='bx bx-chevron-right'></i>
-          </a>
-          <a href="#" class="flex items-center justify-between bar-hover">
-            <span>Series y Videojuegos</span>
-            <i class='bx bx-chevron-right'></i>
-          </a>
-          <br>
-          <a href="#" class="block bar-hover">Todas las Colecciones</a>
-          <br>
-          <a href="#" class="block bar-hover">FAQs</a>
         </nav>
 
         <div class="border-t border-gray-800 p-4">
@@ -104,6 +88,35 @@
             </a>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fixed inset-0 z-[60] transition-opacity duration-300 ease-in-out" [class.opacity-0]="!isSearchOpen()"
+    [class.pointer-events-none]="!isSearchOpen()" [class.opacity-100]="isSearchOpen()"
+    [class.pointer-events-auto]="isSearchOpen()" (click)="closeSearch()">
+
+    <div class="fixed inset-0 bg-black transition-opacity duration-300 ease-in-out"></div>
+
+    <div class="fixed inset-0 flex items-center justify-center px-4" (click)="$event.stopPropagation()">
+      <div class="relative w-full max-w-2xl">
+        <div class="relative flex items-center">
+          <input type="text" placeholder="Búsqueda" [value]="searchQuery()" (input)="onSearchChange($event)"
+            (keydown.escape)="closeSearch()" autofocus
+            class="w-full bg-black border border-white text-white pl-6 pr-20 py-4 text-lg focus:outline-none placeholder:text-white/70 [&::-webkit-search-cancel-button]:hidden [&::-webkit-search-decoration]:hidden">
+          @if (searchQuery()) {
+          <button (click)="clearSearch()"
+            class="absolute right-4 text-white hover:text-gray-300 transition-colors bg-transparent border-0 cursor-pointer">
+            <i class='bx bx-x text-white text-xl'></i>
+          </button>
+          }
+          <i class='bx bx-search absolute right-12 text-white text-2xl pointer-events-none'></i>
+
+        </div>
+        <button (click)="closeSearch()"
+          class="absolute -right-12 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 transition-colors text-2xl bg-transparent border-0 cursor-pointer">
+          <i class='bx bx-x text-white text-2xl'></i>
+        </button>
       </div>
     </div>
   </div>

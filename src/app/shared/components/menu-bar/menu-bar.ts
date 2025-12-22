@@ -18,6 +18,8 @@ import { RouterLink } from '@angular/router';
 })
 export class MenuBar {
   isMenuOpen = signal(false);
+  isSearchOpen = signal(false);
+  searchQuery = signal('');
 
   toggleMenu() {
     this.isMenuOpen.update(value => !value);
@@ -25,5 +27,23 @@ export class MenuBar {
 
   closeMenu() {
     this.isMenuOpen.set(false);
+  }
+
+  openSearch() {
+    this.isSearchOpen.set(true);
+  }
+
+  closeSearch() {
+    this.isSearchOpen.set(false);
+    this.searchQuery.set('');
+  }
+
+  clearSearch() {
+    this.searchQuery.set('');
+  }
+
+  onSearchChange(event: Event) {
+    const target = event.target as HTMLInputElement;
+    this.searchQuery.set(target.value);
   }
 }
