@@ -285,7 +285,7 @@
   <!-- Modal de Pago Exitoso -->
   @if (showPaymentSuccess()) {
     <app-pay-success
-      [totalAmount]="finalTotal()"
+      [totalAmount]="paidTotal()"
       [transactionId]="transactionId()"
       [customerName]="customerName()"
       (closeModal)="closePaymentSuccess()">

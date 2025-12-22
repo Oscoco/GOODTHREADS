@@ -38,18 +38,24 @@ export class CheckoutComponent {
   showPaymentSuccess = signal<boolean>(false);
   transactionId = signal<string>('');
   customerName = signal<string>('');
+  paidTotal = signal<number>(0);
   
   // Control del loader
   isProcessingPayment = signal<boolean>(false);
+
+  // Computed para calcular impuestos (10% del subtotal)
+  readonly taxes = computed(() => {
+    return this.subtotal() * 0.10;
+  });
 
   // Computed para calcular totales
   readonly total = computed(() => {
     return this.subtotal() + this.shippingCost;
   });
 
-
+  // Total final incluyendo impuestos
   readonly finalTotal = computed(() => {
-    return this.subtotal() + this.shippingCost;
+    return this.subtotal() + this.shippingCost + this.taxes();
   });
 
   constructor() {
@@ -92,6 +98,10 @@ export class CheckoutComponent {
       // Generar ID de transacción
       const id = Math.floor(1000000 + Math.random() * 9000000).toString();
       this.transactionId.set(id);
+      
+      // Guardar el total antes de limpiar el carrito
+      const totalToPay = this.finalTotal();
+      this.paidTotal.set(totalToPay);
       
       // Simular procesamiento del pago (validaciones)
       setTimeout(() => {
