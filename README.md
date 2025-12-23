@@ -73,7 +73,6 @@ http://localhost:4000
 | `npm run build` | 📦 Construye el proyecto para producción |
 | `npm run serve:ssr:good-threads` | 🌐 Inicia el servidor Express con SSR (puerto 4000) |
 | `npm test` | 🧪 Ejecuta las pruebas unitarias |
-| `ng generate component nombre-componente` | 🎨 Genera un nuevo componente |
 
 ## 🎨 Tecnologías Utilizadas
 
@@ -155,5 +154,23 @@ La prioridad fue crear un flujo de compra **sin fricciones**, donde el usuario s
 - El servidor Express (SSR) se ejecuta en el puerto **4000** por defecto
 - Express está configurado para servir archivos estáticos y manejar el renderizado SSR
 - Para producción, siempre ejecuta `npm run build` antes de `npm run serve:ssr:good-threads`
+
+---
+
+### 🔨 Pendientes Conocidos (Roadmap Futuro)
+
+- Debido al tiempo establecido para la prueba y priorizando la estabilidad del flujo principal (Explorar → Carrito → Checkout), se dejaron los siguientes puntos como mejoras para una siguiente fase:
+
+- Barra de Búsqueda Funcional:
+
+- Estado actual: La interfaz cuenta con el diseño de la barra de búsqueda, pero no realiza el filtrado por texto en tiempo real.
+
+- Razón: Se priorizó el sistema de filtrado por categorías y la navegación dinámica, ya que garantizaban que el usuario pudiera encontrar cualquier producto del catálogo de forma estructurada.
+
+- Persistencia de Sesión de Usuario:
+
+- Estado actual: La aplicación permite el checkout como "invitado".
+
+- Razón: Implementar un sistema completo de Autenticación (Auth) habría desviado el enfoque del objetivo principal de la prueba: la experiencia de compra (UI/UX) y el manejo de estados del carrito.
 
 ---
